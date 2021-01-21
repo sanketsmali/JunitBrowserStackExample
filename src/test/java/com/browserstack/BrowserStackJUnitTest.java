@@ -14,7 +14,7 @@ import java.util.Iterator;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -96,7 +96,14 @@ public class BrowserStackJUnitTest {
 
     @After
     public void tearDown() throws Exception {
+    	markTestStatus(SingleTest.TestStatus, null, driver);
         driver.quit();
         if(l != null) l.stop();
+    }
+    
+    
+    public static void markTestStatus(String status, String reason, WebDriver driver) {  // the same WebDriver instance should be passed that is being used to run the test in the calling funtion
+    	JavascriptExecutor jse = (JavascriptExecutor)driver;
+    	jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \""+status+"\", \"reason\": \""+reason+"\"}}");
     }
 }
