@@ -29,7 +29,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class BrowserStackJUnitTest {
     public WebDriver driver;
     private Local l;
-    public String TestStatus;
+    public String TestStatus="failed";
 
     private static JSONObject config;
 

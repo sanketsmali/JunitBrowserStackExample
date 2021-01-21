@@ -1,7 +1,7 @@
 {
   "server": "hub-cloud.browserstack.com",
-  "user": "sanketmali3",
-  "key": "3To83F1ypxYtoFrT3omA",
+  "user": "sanketmali4",
+  "key": "XaqpcHttuyFzXSzC3uNM",
 
   "capabilities": {
     "build": "junit-browserstack",
