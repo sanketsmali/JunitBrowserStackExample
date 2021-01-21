@@ -29,6 +29,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class BrowserStackJUnitTest {
     public WebDriver driver;
     private Local l;
+    public String TestStatus;
 
     private static JSONObject config;
 
@@ -52,7 +53,8 @@ public class BrowserStackJUnitTest {
         return taskIDs;
     }
 
-    @Before
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@Before
     public void setUp() throws Exception {
         JSONArray envs = (JSONArray) config.get("environments");
 
@@ -83,6 +85,9 @@ public class BrowserStackJUnitTest {
         if(accessKey == null) {
             accessKey = (String) config.get("key");
         }
+        
+        capabilities.setCapability("browserstack.debug", "true");
+        capabilities.setCapability("browserstack.console", "verbose");
 
         if(capabilities.getCapability("browserstack.local") != null && capabilities.getCapability("browserstack.local") == "true"){
             l = new Local();
@@ -96,7 +101,8 @@ public class BrowserStackJUnitTest {
 
     @After
     public void tearDown() throws Exception {
-    	markTestStatus(SingleTest.TestStatus, null, driver);
+    	markTestStatus(TestStatus, null, driver);
+    	System.out.print(TestStatus);
         driver.quit();
         if(l != null) l.stop();
     }

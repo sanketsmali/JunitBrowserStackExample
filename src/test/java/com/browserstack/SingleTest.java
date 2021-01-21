@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 public class SingleTest extends BrowserStackJUnitTest {
 	
-	public static String TestStatus="failed";
+
 
   @Test
   public void test() throws Exception {
@@ -18,7 +18,7 @@ public class SingleTest extends BrowserStackJUnitTest {
     element.sendKeys("BrowserStack");
     element.submit();
     Thread.sleep(5000);
-    assertEquals("BrowserStack - Google Search", driver.getTitle());
+    assertEquals("BrowserStack1- Google Search", driver.getTitle());
     TestStatus="passed";
   }
 }
