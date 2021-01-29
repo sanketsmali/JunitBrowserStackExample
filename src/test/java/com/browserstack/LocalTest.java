@@ -11,7 +11,7 @@ public class LocalTest extends BrowserStackJUnitTest {
 	
   @Test
   public void test() throws Exception {
-    driver.get("http://localhost:8888/MAMP/?language=English");
+    driver.get("http://localhost/MAMP/?language=English");
     Thread.sleep(3000);
     System.out.println(driver.getTitle());
     assertTrue(driver.getTitle().equalsIgnoreCase("MAMP"));
