@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
@@ -77,6 +76,8 @@ public class BrowserStackJUnitTest {
                 capabilities.setCapability(pair.getKey().toString(), pair.getValue().toString());
             }
         }
+        
+        String buildName = System.getenv("BROWSERSTACK_BUILD_NAME");
 
         String username = System.getenv("BROWSERSTACK_USERNAME");
         if(username == null) {
@@ -88,10 +89,10 @@ public class BrowserStackJUnitTest {
             accessKey = (String) config.get("key");
         }
         
-        String s = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+     
         capabilities.setCapability("browserstack.debug", "true");
         capabilities.setCapability("browserstack.console", "verbose");
-        capabilities.setCapability("build", "BuildNo. "+s);
+        capabilities.setCapability("build", buildName); 
 
         if(capabilities.getCapability("browserstack.local") != null && capabilities.getCapability("browserstack.local") == "true"){
             l = new Local();
