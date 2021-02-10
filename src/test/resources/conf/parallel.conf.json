@@ -21,6 +21,11 @@
       "os": "OS X"
     },
     {
+      "device": "iPhone 8 Plus",
+      "os_version": "11"
+    },
+    
+    {
       "browser": "Internet Explorer"
     }
   ]

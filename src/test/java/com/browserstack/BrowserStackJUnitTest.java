@@ -57,6 +57,10 @@ public class BrowserStackJUnitTest {
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	@Before
     public void setUp() throws Exception {
+    	
+    	System.getProperties().put("http.proxyHost", "localhost");
+    	System.getProperties().put("http.proxyPort", "9687");
+    	
         JSONArray envs = (JSONArray) config.get("environments");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -95,7 +99,7 @@ public class BrowserStackJUnitTest {
         capabilities.setCapability("build", buildName); 
 
         if(capabilities.getCapability("browserstack.local") != null && capabilities.getCapability("browserstack.local") == "true"){
-            l = new Local();
+            l	 = new Local();
             Map<String, String> options = new HashMap<String, String>();
             options.put("key", accessKey);
             l.start(options);
@@ -106,6 +110,9 @@ public class BrowserStackJUnitTest {
 
     @After
     public void tearDown() throws Exception {
+    	
+    	
+
     	markTestStatus(TestStatus, null, driver);
     	System.out.print(TestStatus);
         driver.quit();

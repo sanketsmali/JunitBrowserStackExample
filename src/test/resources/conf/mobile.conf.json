@@ -1,0 +1,22 @@
+{
+  "server": "hub-cloud.browserstack.com",
+  "user": "sanketmali4",
+  "key": "XaqpcHttuyFzXSzC3uNM",
+
+  "capabilities": {
+    "build": "junit-browserstack",
+    "name": "mobile_test",
+    "browserstack.debug": true
+  },
+
+  "environments": [
+    {
+      "browserName": "iPhone",
+      "device": "iPhone XS",
+      "realMobile": "true",
+      "os_version": "13"
+      
+      
+    }
+  ]
+}
